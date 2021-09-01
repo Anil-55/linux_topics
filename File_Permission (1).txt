@@ -1,0 +1,113 @@
+﻿File Permission:
+=================
+
+What is umask value in linux ?
+
+ Ans: Umask determintes the default permission for files and folders in linux/unix .
+      default umask value under root user is 0022 .(----w--w-).
+      default umask value under normal user is 0002 (-------w-).
+
+ What is the full permission for a file in linux ?
+
+ Ans: The permission if a file in linux is 666 (rw-rw-rw-) .
+      
+What is the full permission for a folder in linux .
+
+Ans: The full permission for a folder in linux/unix is 777(rwxrwxrwx).
+
+ What is the default permission for a file and folder in linux/unix ?
+
+Ans: Default permission for a file under root user is 
+     666 - 022 = 644
+    Default permission for a folder under root user is 
+     777 - 022 = 755 
+    default permission for a file under normal user is 
+     666  - 002 = 664 
+    default permission for a folder under normal user is 
+     777  - 002 = 775 .
+read(r)=4
+write(w)=2
+execute(x)=1
+----------(rwxrwxrwx)(777) 
+
+----------(rw-rw-rw-)666
+----------(--x--x--x)111
+----------(-wx-wx-wx)333
+----------(r-xr-xr-x)555
+----------(---------)0  
+ 
+
+
+ #################################################################
+
+   Special Permission: 
+======================
+
+ There are three types of special permission .
+
+ 1> suid(set-user-id) - u+s (4)
+ 2> sgid(set-group-id) - g+s (2)
+ 3> stickybit - o+t (1) 
+
+ >> All above three permission can be assign using chmod command .
+
+ 1> suid(set-user-id) - 
+
+What is Set User ID (setuid)?
+SUID is a special permission assigned to a executable file/program . 
+These permissions allow the file being executed with the privileges of the owner by all other users. 
+
+>> For example, if a file was owned by the root user and has the setuid ,
+ no matter who executed the file it would always run with root user privileges.
+
+  >> How to assign suid permission .
+  # chmod u+s <command_path>
+        (or)
+  # chmod +4000 <command_path>
+
+>> How to remove suid permission .
+  # chmod u-s <command_path> 
+        (or)
+  # chmod -4000 <command_path>
+
+What is Set Group ID (setgid) for files? 
+
+Ans: SGID is a special file permission that applies to folder and
+    allow other users to inherit the effective  group owner(gid) according to parent directory when they create any sub folder or file. 
+
+    How to assign sgid permission to a folder ?
+    
+     # chmod g+s <foldername>
+
+          (or)
+     # chmod +2000 <foldername>
+
+    
+     How to remove sgid permission .
+
+     # chmod g-s <foldername>
+
+           (or)
+     # chmod -2000 <foldername> 
+
+
+ What is sticky bit on a directory
+ 
+ Ans: When the sticky bit is set on a directory, Under the sticky bit applied directory 
+      who creates any file or folder, only owner and root user can delete the files or folders .
+      Other users can not delete these files and folders .
+    
+  How to assign stikybit permission ?
+
+  # chmod o+t <folder>
+
+       (or)
+  # chmod +1000 <folder>
+
+ How to remove stickybit permission ?
+
+ # chmod o-t <foldername>
+
+     (or)
+ # chmod -1000 <foldername> 
+
